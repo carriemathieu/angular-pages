@@ -11,7 +11,7 @@
     <!-- NUMBERED BUTTONS -->
      <!-- ngClass- assigns class name property. active class = if currentPage === index (boolean... if true, class = active. false) -->
      <!-- ng-container exists solely to provide extra ng directives -->
-     <ng-container *ngFor="let image of images; let i = index;">
+     <ng-container *appTimes="images.length; let i = index">
       <li 
         class="page-item" 
         [appClass]="{ active: i === currentPage }"

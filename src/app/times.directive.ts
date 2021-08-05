@@ -20,7 +20,10 @@ export class TimesDirective {
     // from 0 to times, create new instance of templateref
     for (let i = 0; i < times; i++) {
       // createEmbeddedview = create element, referencing templateRef
-      this.viewContainer.createEmbeddedView(this.templateRef, {})
+      // object passed in as arg to createEmbeddedView: allows us to reference that item in template
+      this.viewContainer.createEmbeddedView(this.templateRef, {
+        index: i
+      })
     }
   }
 }
