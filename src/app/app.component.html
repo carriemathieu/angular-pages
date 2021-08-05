@@ -1,0 +1,29 @@
+<nav>
+  <ul class="pagination">
+   <!-- PREVIOUS BUTTON -->
+    <li 
+      class="page-item"
+      [ngClass]="{ disabled: currentPage === 0 }"
+    >
+      <a (click)="currentPage = currentPage - 1" class="page-link">Prev</a>
+    </li>
+
+    <!-- NUMBERED BUTTONS -->
+     <!-- ngClass- assigns class name property. active class = if currentPage === index (boolean... if true, class = active. false) -->
+    <li 
+      class="page-item" 
+      [ngClass]="{ active: i === currentPage }"
+      *ngFor="let image of images; let i = index;"
+    >
+      <a (click)="currentPage = i" class="page-link">{{ i + 1 }}</a>
+    </li>
+
+    <!-- NEXT BUTTON -->
+    <li 
+      class="page-item"
+      [ngClass]="{ disabled: currentPage === images.length-1 }"
+    >
+      <a (click)="currentPage = currentPage + 1"  class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
