@@ -10,13 +10,16 @@
 
     <!-- NUMBERED BUTTONS -->
      <!-- ngClass- assigns class name property. active class = if currentPage === index (boolean... if true, class = active. false) -->
-    <li 
-      class="page-item" 
-      [ngClass]="{ active: i === currentPage }"
-      *ngFor="let image of images; let i = index;"
-    >
-      <a (click)="currentPage = i" class="page-link">{{ i + 1 }}</a>
-    </li>
+     <!-- ng-container exists solely to provide extra ng directives -->
+     <ng-container *ngFor="let image of images; let i = index;">
+      <li 
+        class="page-item" 
+        [ngClass]="{ active: i === currentPage }"
+        *ngIf="checkWindowIndex(i)"
+      >
+        <a (click)="currentPage = i" class="page-link">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
 
     <!-- NEXT BUTTON -->
     <li 
