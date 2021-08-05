@@ -10,8 +10,14 @@ export class ClassDirective {
   
   // @input allows property to be set by parent componenet
   // allows us to "intercept" whenever angular tries to set background color
-  @Input() set backgroundColor(color: string) {
+  @Input('appClass') set classNames(classObj: any) {
     // nativeElement - actual element (li)
-    this.element.nativeElement.style.backgroundColor = color;
+    for (let key in classObj){
+      if (classObj[key]){
+        this.element.nativeElement.classList.add(key);
+      } else {
+        this.element.nativeElement.classList.remove(key);
+      }
+    }
   }
 }
